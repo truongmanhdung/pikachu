@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="81c91a4c-32d1-4de4-b5fd-e6ed8047f16d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/redux-saga.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/loading.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/modal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/work.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apis/work.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/l.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commons/Theme/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/commons/axiosService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/globalloading/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/globalloading/style.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/globalloading/test.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/signup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/search/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/search/styles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/workform/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/workform/styles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/workitem/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/workitem/styles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constansts/ActionTypes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constansts/config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constansts/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constansts/loading.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constansts/modal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constansts/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constansts/work.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/App/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/App/styles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Taskboard/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Taskboard/styles.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/toastHelper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/loading.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/modal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/works.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/configureStore.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sagas/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/apiCaller.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1vI2QW9FvTTVclTnMinKohoMpUw" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="81c91a4c-32d1-4de4-b5fd-e6ed8047f16d" name="Default Changelist" comment="" />
+      <created>1626235266960</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1626235266960</updated>
+      <workItem from="1626235268068" duration="554000" />
+      <workItem from="1626235825199" duration="3305000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
