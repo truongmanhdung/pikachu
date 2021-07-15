@@ -1,24 +1,30 @@
 .ngoai{
     position: relative;
-    height: 50px;
-    line-height: 50px;
+    width: 30px;
+    height: 600px;
+    margin: 0 auto;
 }
 p{
     margin: 0;
 }
 .trong{
     position: absolute;
-    background-color: red;
-    top: 0;
-    bottom: 0;
+    background: #f16328;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #ea7929, #955301);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #ec915e, #ff8837); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    right: 0;
+    bottom: 0px;
     left: 0;
-    opacity: 0.5;
-    animation: bg  180s 0s linear;
+
+    z-index: 1;
+    animation: bg  360s 0s linear;
 }
 @keyframes bg {
     from{
-        width: 100%;
+        height: 600px;
     }to{
-         width: 0%;
+         height: 0px;
      }
 }

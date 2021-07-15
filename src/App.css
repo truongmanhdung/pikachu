@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+.home{
+  background-image: url("./public/backgroud.webp");
+  background-size: cover;
+}
+.color-yellow{
+  color: yellow;
+}
