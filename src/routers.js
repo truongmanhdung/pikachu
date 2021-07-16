@@ -1,18 +1,31 @@
 import React from "react";
-import StartView from "./components/start";
-import Game from "./components/game";
-
+import Content from "./components/content/index";
+import ShowStart from "./components/showstart/index"
+import Level from "./components/level";
+import Help from "./components/help";
 const routes = [
+    {
+        path: "/startgame",
+        exact: false,
+        component: () => <Content/>,
+    },
     {
         path: "/",
         exact: true,
-        component: () => <StartView/>,
+        component: () => <ShowStart/>,
     },
     {
-        path: "/game",
-        exact: true,
-        component: () => <Game/>,
+        path: "/startlevel",
+        exact: false,
+        component: () => <Level/>,
     },
+    {
+        path: "/help",
+        exact: false,
+        component: () => <Help/>,
+    },
+
+
 
 
 ];

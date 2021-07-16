@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Clock from "./clock";
-
-import Header from "./header";
 import backgroud from "../image/bgd.jpg";
-import Start from "./start";
 import {Route, Switch} from "react-router-dom";
 import routers from "../routers";
 import routes from "../routers";
