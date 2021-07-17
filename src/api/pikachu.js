@@ -1,28 +1,67 @@
-import image1 from "../image/fight.png";
-import image2 from "../image/pikachu.png";
-import image3 from "../image/avatar.png";
-import image4 from "../image/bullbasaur.png";
-import image5 from "../image/eevee.png";
-import image6 from "../image/instinct.png";
-import image7 from "../image/pokeball.png";
-import image8 from "../image/smartphone.png";
-import image9 from "../image/squirtle.png";
-import image10 from "../image/pokeballs.png";
-import image11 from "../image/star.png";
-import image12 from "../image/mew.png";
-import image13 from "../image/meowth.png";
-import image14 from "../image/gaming.png";
-import image15 from "../image/snorlax.png";
-import image16 from "../image/egg.png";
-import image17 from "../image/crown.png";
-import image18 from "../image/charmander.png";
-import image19 from "../image/zubat.png";
-import image20 from "../image/backpack.png";
-import image21 from "../image/bellsprout.png";
-import image22 from "../image/map.png";
-import image23 from "../image/clock.png";
-import image24 from "../image/player.png";
-
+import image1 from "../image/1.png";
+import image2 from "../image/2.png";
+import image3 from "../image/3.png";
+import image4 from "../image/4.png";
+import image5 from "../image/5.png";
+import image6 from "../image/6.png";
+import image7 from "../image/7.png";
+import image8 from "../image/8.png";
+import image9 from "../image/9.png";
+import image10 from "../image/10.png";
+import image11 from "../image/11.png";
+import image12 from "../image/12.png";
+import image13 from "../image/13.png";
+import image14 from "../image/14.png";
+import image15 from "../image/15.png";
+import image16 from "../image/16.png";
+import image17 from "../image/17.png";
+import image18 from "../image/18.png";
+import image19 from "../image/19.png";
+import image20 from "../image/20.png";
+import image21 from "../image/21.png";
+import image22 from "../image/22.png";
+import image23 from "../image/23.png";
+import image24 from "../image/24.png";
+import image25 from "../image/25.png";
+import image26 from "../image/26.png";
+import image27 from "../image/27.png";
+import image28 from "../image/28.png";
+import image29 from "../image/29.png";
+import image30 from "../image/30.png";
+import image31 from "../image/31.png";
+import image32 from "../image/32.png";
+import image33 from "../image/33.png";
+import image34 from "../image/34.png";
+import image35 from "../image/35.png";
+import image36 from "../image/36.png";
+import image37 from "../image/37.png";
+import image38 from "../image/38.png";
+import image39 from "../image/39.png";
+import image40 from "../image/40.png";
+import image41 from "../image/41.png";
+import image42 from "../image/42.png";
+import image43 from "../image/43.png";
+import image44 from "../image/44.png";
+import image45 from "../image/45.png";
+import image46 from "../image/46.png";
+import image47 from "../image/47.png";
+import image48 from "../image/48.png";
+import image49 from "../image/49.png";
+import image50 from "../image/50.png";
+import image51 from "../image/51.png";
+import image52 from "../image/52.png";
+import image53 from "../image/53.png";
+import image54 from "../image/54.png";
+import image55 from "../image/55.png";
+import image56 from "../image/56.png";
+import image57 from "../image/57.png";
+import image58 from "../image/58.png";
+import image59 from "../image/59.png";
+import image60 from "../image/60.png";
+import image61 from "../image/61.png";
+import image62 from "../image/62.png";
+import image63 from "../image/63.png";
+import image64 from "../image/64.png";
 export const api1 = [
     {
         id: 1,
@@ -186,6 +225,54 @@ export const api2= [
         id: 24,
         image: image24,
     },
+    {
+        id: 25,
+        image: image25,
+    },
+    {
+        id: 26,
+        image: image26,
+    },
+    {
+        id: 27,
+        image: image27,
+    },
+    {
+        id: 28,
+        image: image28,
+    },
+    {
+        id: 29,
+        image: image29,
+    },
+    {
+        id: 30,
+        image: image30,
+    },
+    {
+        id: 31,
+        image: image31,
+    },
+    {
+        id: 32,
+        image: image32,
+    },
+    {
+        id: 33,
+        image: image33,
+    },
+    {
+        id: 34,
+        image: image34,
+    },
+    {
+        id: 35,
+        image: image35,
+    },
+    {
+        id: 36,
+        image: image36,
+    }
 ];
 export const api3 = [
     {
@@ -284,4 +371,164 @@ export const api3 = [
         id: 24,
         image: image24,
     },
+    {
+        id: 25,
+        image: image25,
+    },
+    {
+        id: 26,
+        image: image26,
+    },
+    {
+        id: 27,
+        image: image27,
+    },
+    {
+        id: 28,
+        image: image28,
+    },
+    {
+        id: 29,
+        image: image29,
+    },
+    {
+        id: 30,
+        image: image30,
+    },
+    {
+        id: 31,
+        image: image31,
+    },
+    {
+        id: 32,
+        image: image32,
+    },
+    {
+        id: 33,
+        image: image33,
+    },
+    {
+        id: 34,
+        image: image34,
+    },
+    {
+        id: 35,
+        image: image35,
+    },
+    {
+        id: 36,
+        image: image36,
+    },
+    {
+        id: 37,
+        image: image37,
+    },
+    {
+        id: 38,
+        image: image38,
+    },
+    {
+        id: 39,
+        image: image39,
+    },
+    {
+        id: 40,
+        image: image40,
+    },
+    {
+        id: 41,
+        image: image41,
+    },
+    {
+        id: 42,
+        image: image42,
+    },
+    {
+        id: 43,
+        image: image43,
+    },
+    {
+        id: 44,
+        image: image44,
+    },
+    {
+        id: 45,
+        image: image45,
+    },
+    {
+        id: 46,
+        image: image46,
+    },
+    {
+        id: 47,
+        image: image47,
+    },
+    {
+        id: 48,
+        image: image48,
+    },
+    {
+        id: 49,
+        image: image49,
+    },
+    {
+        id: 50,
+        image: image50,
+    },
+    {
+        id: 51,
+        image: image51,
+    },
+    {
+        id: 52,
+        image: image52,
+    },
+    {
+        id: 53,
+        image: image53,
+    },
+    {
+        id: 54,
+        image: image54,
+    },
+    {
+        id: 55,
+        image: image55,
+    },
+    {
+        id: 56,
+        image: image56,
+    },
+    {
+        id: 57,
+        image: image57,
+    },
+    {
+        id: 58,
+        image: image58,
+    },
+    {
+        id: 59,
+        image: image59,
+    },
+    {
+        id: 60,
+        image: image60,
+    },
+    {
+        id: 61,
+        image: image61,
+    },
+    {
+        id: 62,
+        image: image62,
+    },
+    {
+        id: 63,
+        image: image63,
+    },
+    {
+        id: 64,
+        image: image64,
+    }
 ]

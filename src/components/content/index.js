@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as pikachuAction from "../../actions/index";
 import {api1,api2,api3} from "../../api/pikachu"
+import { Link } from 'react-router-dom';
 Content.propTypes = {
 
 };
@@ -13,14 +14,17 @@ Content.propTypes = {
 
 function Content(props) {
     var api = [];
+    var a = 84;
     const {lever} = props;
-    console.log(lever)
-    if(lever===1){
+    if(lever==="1"){
         api = api1;
-    }else if(lever===2){
+        a = 84
+    }else if(lever==="2"){
         api = api2;
+        a = 56;
     }else{
-        api = api2;
+        api = api3;
+        a = 42;
     }
 
     var pika = [];
@@ -42,16 +46,18 @@ function Content(props) {
         showPikachu(pikachu);
         setPikachu(pikachu);
     },[pikachu]);
-    const angame = () =>{
-
+    
+    const angame = (pika) =>{
+        // console.log(pika);
+        // pikachu.splice(pika,1);
+        // setPikachu(pikachu);
     }
 
-    const {pikachus} = props;
     const showIcon = pikachu.map((pika,index)=>{
         return (
             <div onClick={()=>angame(pika.id,index,pika)} key={index} className="bg-light" style={{
-                width: 84,
-                height: 84,
+                width: a,   
+                height: a,
                 padding: 2,
                 border: "1px solid black",
                 boxSizing: "border-box"
@@ -66,7 +72,7 @@ function Content(props) {
     return (
         <div>
             <div className="d-flex justify-content-around"
-                 style={{width: "1000px", margin: "40px auto", marginBottom: 0}}>
+                 style={{width: "1000px", margin: "0px auto", marginBottom: 0}}>
                 <div className="text-center">
                     <h1 style={{
                         color: "rgb(253, 125, 74)"
@@ -100,9 +106,9 @@ function Content(props) {
                 </div>
                 <Clock/>
             </div>
-            <div className="d-flex" style={{
+            <div className="d-flex ps-3" style={{
                 justifyContent: "space-between",
-                width: "500px",
+                width: "600px",
                 alignItems: "center",
                 margin: "10px auto",
             }}>
@@ -133,6 +139,15 @@ function Content(props) {
                         color: "rgb(253, 125, 74)"
                     }} className="m-0 mx-2">Chơi lại</h5>
                 </div>
+                <Link to="/" style={{textDecoration: "none"}} className="d-flex align-items-center">
+                    <i style={{
+                        color: "yellow"
+                    }} className="fas fa-building">
+                    </i>
+                    <h5 style={{
+                        color: "rgb(253, 125, 74)"
+                    }} className="m-0 mx-2">Trang chủ</h5>
+                </Link>
             </div>
         </div>
     );

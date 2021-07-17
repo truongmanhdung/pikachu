@@ -5,7 +5,7 @@ import "./style.css";
 import {bindActionCreators} from "redux";
 import * as leverAction from "../../actions/lever";
 import {connect} from "react-redux";
-import {updateLever} from "../../actions/lever";
+import { Link } from 'react-router-dom';
 Level.propTypes = {
 
 };
@@ -30,43 +30,49 @@ function Level(props) {
                 margin: "80px auto"
             }}>
                 <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <div className="p-2">
-                        <div onClick={()=>onUpdateLever(1)} className="bg-nen1 pt-4" style={{
+                    <Link to="/startgame" style={{textDecoration: "none"}}>
+                        <div className="p-2">
+                            <div onClick={()=>onUpdateLever(1)} className="bg-nen1 pt-4" style={{
+                                    height: 300,
+                                    borderRadius: "10px",
+                                    textAlign: "center",
+                                    color: "white",
+                                    cursor: "pointer"
+                                }}>
+                                <h1>Dễ</h1>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                    <Link to="/startgame" style={{textDecoration: "none"}}>
+                        <div className="p-2">
+                            <div onClick={()=>onUpdateLever(2)} className="bg-nen2 pt-4" style={{
                                 height: 300,
                                 borderRadius: "10px",
                                 textAlign: "center",
                                 color: "white",
                                 cursor: "pointer"
                             }}>
-                            <h1>Dễ</h1>
+                                <h1>Trung bình</h1>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                 </div>
                 <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
-                    <div className="p-2">
-                        <div onClick={()=>onUpdateLever(2)} className="bg-nen2 pt-4" style={{
-                            height: 300,
-                            borderRadius: "10px",
-                            textAlign: "center",
-                            color: "white",
-                            cursor: "pointer"
-                        }}>
-                            <h1>Trung bình</h1>
+                    <Link to="/startgame" style={{textDecoration: "none"}}> 
+                        <div className="p-2">
+                            <div onClick={()=>onUpdateLever(3)} className="bg-nen3 pt-4" style={{
+                                height: 300,
+                                borderRadius: "10px",
+                                textAlign: "center",
+                                color: "white",
+                                cursor: "pointer"
+                            }}>
+                                <h1 >Khó</h1>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
-                    <div className="p-2">
-                        <div onClick={()=>onUpdateLever(3)} className="bg-nen3 pt-4" style={{
-                            height: 300,
-                            borderRadius: "10px",
-                            textAlign: "center",
-                            color: "white",
-                            cursor: "pointer"
-                        }}>
-                            <h1>Khó</h1>
-                        </div>
-                    </div>
+                    </Link>
                 </div>
             </div>
         </div>
