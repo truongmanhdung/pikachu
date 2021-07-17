@@ -9,3 +9,14 @@ export const showPikachu = (pikachus) => {
     }
 }
 
+export const changeStatusIcon = (index, indexItem) => {
+    return {
+        type: actions.CHANGESTATUS,
+        payload: {
+            index,
+            indexItem
+        }
+    }
+}
+//
+// export const clickIcon = (pika,)

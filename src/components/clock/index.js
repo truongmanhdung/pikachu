@@ -1,15 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
-Clock.propTypes = {
-
-};
 
 function count (num){
     return num - 1;
 }
 function Clock(props) {
-    const [timeup, setTimeUp] = useState(360);
+    const lever = sessionStorage.getItem("lever");
+    var time = 90;
+    if(lever==="2"){
+        time = 180;
+    }else if(lever ==="3"){
+        time = 360;
+    }
+    const [timeup, setTimeUp] = useState(time-1);
 
     useEffect(()=>{
         if(timeup>0){
@@ -23,7 +27,9 @@ function Clock(props) {
         if(timeup>0){
             return (<div className="mx-2">
                 <div className="ngoai">
-                    <p className="trong"></p>
+                    <p className="trong" style={{
+                        animation: `bg ${time}s 0s linear`,
+                    }}></p>
                 </div>
                 <p className="text-white" style={{
                     zIndex: 1000,

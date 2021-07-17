@@ -6,9 +6,6 @@ import {bindActionCreators} from "redux";
 import * as leverAction from "../../actions/lever";
 import {connect} from "react-redux";
 import { Link } from 'react-router-dom';
-Level.propTypes = {
-
-};
 
 function Level(props) {
     // const {levers} = props
@@ -60,7 +57,7 @@ function Level(props) {
                     </Link>
                 </div>
                 <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
-                    <Link to="/startgame" style={{textDecoration: "none"}}> 
+                    <Link to="/startgame" style={{textDecoration: "none"}}>
                         <div className="p-2">
                             <div onClick={()=>onUpdateLever(3)} className="bg-nen3 pt-4" style={{
                                 height: 300,

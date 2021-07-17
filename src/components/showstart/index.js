@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import pikachu from '../../1.png';
 import {Link} from "react-router-dom";
 import logo from "../../logo.png";
-StartView.propTypes = {
-
-};
 
 function StartView(props) {
 

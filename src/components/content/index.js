@@ -6,31 +6,42 @@ import {bindActionCreators} from "redux";
 import * as pikachuAction from "../../actions/index";
 import {api1,api2,api3} from "../../api/pikachu"
 import { Link } from 'react-router-dom';
-Content.propTypes = {
-
-};
-
-
 
 function Content(props) {
     var api = [];
     var a = 84;
+    var c = "Dễ";
     const {lever} = props;
     if(lever==="1"){
         api = api1;
-        a = 84
+        a = 84;
+        c = "Dễ";
     }else if(lever==="2"){
         api = api2;
         a = 56;
+        c = "Trung bình"
     }else{
         api = api3;
         a = 42;
+        c = "Khó";
     }
+
+    function chunkArray(myArray, chunk_size){
+        var results = [];
+        while (myArray.length) {
+            results.push(myArray.splice(0, chunk_size));
+        }
+        return results;
+    }
+    var result = chunkArray(api1, 8);
+    console.log(result);
 
     var pika = [];
     for(var i = 0; i < 4 ; i ++){
         pika.push(...api);
     }
+
+
 
     const [pikachu, setPikachu] = useState(pika);
 
@@ -46,17 +57,24 @@ function Content(props) {
         showPikachu(pikachu);
         setPikachu(pikachu);
     },[pikachu]);
-    
-    const angame = (pika) =>{
+
+    const angame = (index) =>{
         // console.log(pika);
         // pikachu.splice(pika,1);
         // setPikachu(pikachu);
+        console.log(index);
     }
 
+    const handelClickIcon = (index,pika,pikachus)=>{
+        // console.log(index);
+        // console.log(pika);
+        // console.log(pikachus);
+    }
+    const {pikachus} = props;
     const showIcon = pikachu.map((pika,index)=>{
         return (
-            <div onClick={()=>angame(pika.id,index,pika)} key={index} className="bg-light" style={{
-                width: a,   
+            <div onClick={()=>handelClickIcon(index,pika,pikachus)} key={index} className="bg-light" style={{
+                width: a,
                 height: a,
                 padding: 2,
                 border: "1px solid black",
@@ -76,11 +94,11 @@ function Content(props) {
                 <div className="text-center">
                     <h1 style={{
                         color: "rgb(253, 125, 74)"
-                    }}>Bàn</h1>
+                    }}>Mức độ</h1>
                     <h1 style={{
                         color: "yellow",
                         fontWeight: "bold"
-                    }}>1</h1>
+                    }}>{c}</h1>
                     <h1 style={{
                         color: "rgb(253, 125, 74)"
 

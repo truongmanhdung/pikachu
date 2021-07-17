@@ -4,9 +4,7 @@ import backgroud from "../image/bgd.jpg";
 import {Route, Switch} from "react-router-dom";
 import routers from "../routers";
 import routes from "../routers";
-Home.propTypes = {
 
-};
 
 function Home(props) {
     const showContent = (routes) => {

@@ -2,19 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81c91a4c-32d1-4de4-b5fd-e6ed8047f16d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/clock/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clock/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/clock/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/clock/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/game/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/help/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/help/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/start/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/showstart/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/level/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/level/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/showstart/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/showstart/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constans/pikachu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constans/pikachu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/saga/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/saga/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/selector/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/selector/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,23 +76,12 @@
       <workItem from="1626235268068" duration="554000" />
       <workItem from="1626235825199" duration="3510000" />
       <workItem from="1626310711068" duration="31293000" />
-      <workItem from="1626397142606" duration="14527000" />
+      <workItem from="1626397142606" duration="14811000" />
+      <workItem from="1626483789401" duration="13720000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/level/index.js</url>
-          <line>8</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
