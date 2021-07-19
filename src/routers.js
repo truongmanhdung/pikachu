@@ -1,8 +1,8 @@
 import React from "react";
-import Content from "./components/content/index";
-import ShowStart from "./components/showstart/index"
-import Level from "./components/level";
-import Help from "./components/help";
+import Content from "./Component/content/Content";
+import ShowStart from "./Component/showstart/index"
+import Level from "./Component/level";
+import Help from "./Component/help";
 const routes = [
     {
         path: "/startgame",
