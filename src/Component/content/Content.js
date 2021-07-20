@@ -3,18 +3,20 @@ import {connect} from 'react-redux';
 import * as action from '../../Redux/Actions/index';
 import Clock from "../clock/index";
 import {Link} from "react-router-dom";
-import nhac from "../../image/nhac.mp3";
-import nhac2 from "../../image/nhac2.mp3"
+import nhac13 from "../../image/nhac.mp3";
+import nhac23 from "../../image/nhac2.mp3"
 import ReactAudioPlayer from 'react-audio-player';
 import "./content.css";
 function Content(props){
-    const [nhacphat, setNhacPhat] = useState(nhac);
-    setTimeout(()=>{
-        setNhacPhat(nhac2)
-    },180000);
-    setTimeout(()=>{
-        setNhacPhat(nhac)
-    },180000)
+    const [nhacphat, setNhacPhat] = useState(nhac13);
+    const nhac2 = setInterval(()=>{
+        setNhacPhat(nhac23);
+        clearInterval(nhac1);
+    },120000);
+    const nhac1 = setInterval(()=>{
+        setNhacPhat(nhac13);
+        clearInterval(nhac2)
+    },120000)
 
     var { list, point} = props;
     const [checkHandle, setCheckHandle] = useState(10);

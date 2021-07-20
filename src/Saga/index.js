@@ -131,17 +131,14 @@ function* reLoadListSaga({payload}){
             m.push(b);
         }
     }
-    console.log(m);
     for(var n = 0; n< listnew.length ; n++){
-        for (var o = 0; o < m.length; m++) {
-            var z = Math.floor(Math.random() * m[o])
-            if (z === m[o]) {
-                var temp = listnew[n];
-                listnew[n] = listnew[z];
-                listnew[z] = temp;
-            }
-
+        if(listnew[n].status === false){
+            var item = m[Math.floor(Math.random()*m.length)];
+            var temp = listnew[n];
+            listnew[n] = listnew[item];
+            listnew[item] = temp;
         }
+        
     }
     Array.prototype.chunk = function ( n ) {
         if ( !this.length ) {
