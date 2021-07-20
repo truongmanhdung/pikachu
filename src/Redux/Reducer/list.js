@@ -1,58 +1,21 @@
-import { api1,api2,api3 } from "../../apis/pikachu";
 import * as types from "../Constant/types";
 
-
-const lever = sessionStorage.getItem("lever");
-var init = api1;
-var cols = 8;
-var rows = 8;
-if(lever === "2"){
-    init = api2;
-    cols = 12;
-    rows = 12;
-}else if(lever === "3"){
-    init = api3;
-    cols = 16;
-    rows = 16;
-}else{
-    init = api1;
-    cols = 8;
-    rows = 8;
-}
-
-var limit = 4;
-
-const setState = (initialState) => {
-    for(let i = 0; i < cols; i++) {
-        const random = Math.floor(Math.random() * init.length);
-        const item = init[random];
-        initialState.push ({
-            id: item.id,
-            status: false,
-            img: item.image,
-            check: item.check
-        });
-        item.check++;
-        if(item.check === limit) {
-            init.splice(random, 1);
-        }
-    }
-    return initialState;
-}
-
-const setStateTwo = (initialStateTwo) => {
-    for(let i = 0; i < rows; i++) {
-        const array = setState([]);
-        initialStateTwo.push(array);
-    }
-    return initialStateTwo;
-}
-const newState = setStateTwo([]);
+const rows = sessionStorage.getItem("rows");
+const cols = sessionStorage.getItem("cols");
+const limit = 4;
 let mount = 0;
-
-
-const tasks = (state = newState , action) => {
+const myReduces = (state = [] , action) => {
     switch (action.type){
+        case types.showList:
+            return state;
+        case types.showListSuccess:
+            const {data} = action.payload;
+            return data;
+        case types.reLoadList:
+            return state
+        case types.reLoadListSucces:
+            const {list} = action.payload;
+            return list;
         case types.viewList:
             return state;
         case types.changeStatus:
@@ -90,4 +53,4 @@ const tasks = (state = newState , action) => {
     }
 }
 
-export default tasks;
+export default myReduces;

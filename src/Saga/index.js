@@ -1,11 +1,22 @@
-import {takeLatest,select, call, put, fork, take, all } from 'redux-saga/effects'
+import {all, call, fork, put, select, take, takeEvery, takeLatest} from 'redux-saga/effects'
 import * as types from './../Redux/Constant/types'
 import * as leverType from '../Redux/Constant/lever'
 import {updatePointSuccess} from "../Redux/Actions/point";
 import {updateLeverSuccess} from "../Redux/Actions/lever";
+import {reLoadListSuccess, showListSuccess} from "../Redux/Actions";
+
+import {checkLineX, checkLineY, checkMoreX, checkTwoPoint, checkRectX, checkMoreY,checkTwoPoint2,checkRectY,checkEndRoad,addSameId} from "../Selector/index"
+import {handleArr} from "./../Redux/Constant/types";
 let checkRequest = 0;
 let checkObj = [];
 let checkHandle = [];
+var init = JSON.parse(sessionStorage.getItem("api"));
+var init = JSON.parse(sessionStorage.getItem("api"));
+const rows = sessionStorage.getItem("rows");
+const cols = sessionStorage.getItem("cols");
+
+
+
 
 function* watcherClick() {
     while(true) {
@@ -14,199 +25,6 @@ function* watcherClick() {
     }
 }
 
-var rows = 8;
-var cols = 8;
-
-const lever = sessionStorage.getItem("lever");
-if(lever === "2"){
-    rows = 12;
-    cols = 12;
-}else if(lever === "3"){
-    rows = 16;
-    cols = 16;
-}else{
-    rows = 8;
-    cols = 8;
-}
-
-// return true la hết đường đi, thuc hien dao mang > va nguoc lai
-const addSameId = (list) => {
-    let flag = true; //Khoi tao mac dinh la het duong di ::!!
-    for (let i = 0; i < rows*3; i++) {
-        for (let j = 0; j < rows; j++) {
-            for (let k = 0; k < cols; k++) {
-                if (list[j][k].id === i && list[j][k].status === false) {
-                    list[j][k].index = j;
-                    list[j][k].indexItem = k;
-                    checkHandle.push(list[j][k]);
-                }
-            }
-        }
-        if(!checkEndRoad(list)) {
-            flag = false; // còn đường đi
-            break;
-        }
-        checkHandle = [];
-    }
-    checkHandle = [];
-    return flag; // return het đường đi
-}
-
-//return true la het duong di voi object chua cac con co cung id va nguoc lai :::))
-const checkEndRoad = (list) => {
-    for(let i = 0; i < checkHandle.length; i++){
-        for(let j = i+1; j < checkHandle.length; j++){
-            if(checkTwoPoint2(list, checkHandle[i].index, checkHandle[j].index, checkHandle[i].indexItem, checkHandle[j].indexItem, checkHandle[i], checkHandle[j])){
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-const checkLineX = (list, x1, x2, y1, y2) => { //check theo hàng
-    let min = Math.min(y1, y2);
-    let max = Math.max(y1, y2);
-    if(x1 === x2) {
-        for(let i = min; i <= max; i++) {
-            if(!list[x1][i].status) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-
-const checkLineY = (list, x1, x2, y1, y2) => {//xét tọa độ y(check theo cột)
-    let min = Math.min(x1, x2);
-    let max = Math.max(x1, x2);
-    if(y1 === y2) {
-        for(let i = min; i <= max; i++) {
-            if(!list[i][y1].status) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-
-const checkRectX = (list, pMin, pMax) => {
-    //xét duyệt các đường đi theo chiều ngang phạm vi hcn
-    if(pMin.indexItem > pMax.indexItem) {
-        [pMin, pMax] = [pMax, pMin];
-    }
-    for(let y = pMin.indexItem + 1; y < pMax.indexItem; y++) {
-        if (
-            checkLineX(list, pMin.index, pMin.index, pMin.indexItem, y) &&
-            checkLineY(list, pMin.index, pMax.index , y, y) &&
-            checkLineX(list, pMax.index, pMax.index, y, pMax.indexItem)
-        ) {
-            return true;
-        }
-    }
-    return false;
-}
-
-const checkRectY = (list, pMin, pMax) => {
-    //xét duyệt các đường đi theo chiều dọc phạm vi hcn
-    if(pMin.index > pMax.index) {
-        [pMin, pMax] = [pMax, pMin];
-    }
-    for(let x = pMin.index + 1; x < pMax.index; x++) {
-        if (
-            checkLineY(list, pMin.index, x, pMin.indexItem, pMin.indexItem) &&
-            checkLineX(list, x, x , pMin.indexItem, pMax.indexItem ) &&
-            checkLineY(list, x, pMax.index , pMax.indexItem, pMax.indexItem)
-        ) {
-            return true;
-        }
-    }
-    return false;
-}
-
-
-const checkMoreX = (list, type, pMin, pMax) => {
-    //xet mo rong theo chieu ngang
-    if(pMin.indexItem > pMax.indexItem) {
-        [pMin, pMax] = [pMax, pMin];
-    }
-    let y = pMax.indexItem;
-    let row = pMin.index;
-    if(type === -1){
-        y = pMin.indexItem;
-        row = pMax.index;
-    }
-    if(checkLineX(list, row, row, pMin.indexItem, pMax.indexItem)){
-        while(list[pMin.index][y].status && list[pMax.index][y].status) {
-            if(checkLineY(list, pMin.index, pMax.index, y, y)) {
-                return true;
-            }
-            y += type;
-            if (!list[pMin.index][y]) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-//xét mở rộng theo chiều dọc
-const checkMoreY = (list, type, pMin, pMax) => {
-    if(pMin.index > pMax.index) {
-        [pMin, pMax] = [pMax, pMin];
-    }
-    let x = pMax.index;
-    let col = pMin.indexItem;
-    if(type === -1){
-        x = pMin.index;
-        col = pMax.indexItem;
-    }
-    if(checkLineY(list, pMin.index, pMax.index, col, col)) {
-        while(list[x][pMin.indexItem].status && list[x][pMax.indexItem].status) {
-            if(checkLineX(list, x, x, pMin.indexItem, pMax.indexItem)) {
-                return true;
-            }
-            x += type;
-            if (!list[x]) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-/**/
-const checkTwoPoint = (list, x1, x2, y1, y2, pMin, pMax) => {
-    list[x1][y1].status = true;
-    list[x2][y2].status = true;
-    return checkLineX(list, x1, x2, y1, y2) ||
-        checkLineY(list, x1, x2, y1, y2) ||
-        checkRectX(list, pMin, pMax) ||
-        checkRectY(list, pMin, pMax) ||
-        checkMoreX(list, 1, pMin, pMax) ||
-        checkMoreX(list, -1, pMin, pMax) ||
-        checkMoreY(list, 1, pMin, pMax) ||
-        checkMoreY(list, -1, pMin, pMax);
-}
-
-const checkTwoPoint2 = (list, x1, x2, y1, y2, pMin, pMax) => {
-    list[x1][y1].status = true;
-    list[x2][y2].status = true;
-    if (checkLineX(list, x1, x2, y1, y2) ||
-        checkLineY(list, x1, x2, y1, y2) ||
-        checkRectX(list, pMin, pMax) ||
-        checkRectY(list, pMin, pMax) ||
-        checkMoreX(list, 1, pMin, pMax) ||
-        checkMoreX(list, -1, pMin, pMax) ||
-        checkMoreY(list, 1, pMin, pMax) ||
-        checkMoreY(list, -1, pMin, pMax)) {
-        return true;
-    } else {
-        list[x1][y1].status = false;
-        list[x2][y2].status = false;
-        return false;
-    }
-}
 
 function* handleItem(list) {
     if(checkObj[0].id === checkObj[1].id &&
@@ -247,9 +65,45 @@ function* getTwoClick(action) {
     }
 }
 function* updateLeverSaga({payload}){
-    const {lever} = payload;
+    const {lever,rows,cols} = payload;
     yield sessionStorage.setItem("lever",lever);
-    yield put(updateLeverSuccess(lever));
+    yield sessionStorage.setItem("cols",cols);
+    yield sessionStorage.setItem("rows",rows);
+    yield put(updateLeverSuccess(lever,rows,cols));
+}
+
+function* showListSaga(){
+    const cols =  yield select(state => state.lever.cols);
+    const rows =  yield select(state => state.lever.rows);
+    const init =  JSON.parse(sessionStorage.getItem("api"));
+    const limit = 4;
+    const setState = (initialState) => {
+        for(let i = 0; i < cols; i++) {
+            const random = Math.floor(Math.random() * init.length);
+            const item = init[random];
+            initialState.push ({
+                id: item.id,
+                status: false,
+                img: item.image,
+                check: item.check
+            });
+            item.check++;
+            if(item.check === limit) {
+                init.splice(random, 1);
+            }
+        }
+        return initialState;
+    }
+
+    const setStateTwo = (initialStateTwo) => {
+        for(let i = 0; i < rows; i++) {
+            const array = setState([]);
+            initialStateTwo.push(array);
+        }
+        return initialStateTwo;
+    }
+    const newState = setStateTwo([]);
+    yield put(showListSuccess(newState))
 }
 
 function* setPointSaga(){
@@ -262,10 +116,50 @@ function* setPointSaga(){
 
 
 }
+function* reLoadListSaga({payload}){
+    var {list} = payload;
+    var listnew = [];
+    for(var i = 0; i < list.length ; i++){
+        var item1 = list[i];
+        for (var j =  0; j < item1.length ; j++) {
+            listnew.push(item1[j]);
+        }
+    }
+    var m = [];
+    for (var b = 0; b<listnew.length ; b++) {
+        if (listnew[b].status === false) {
+            m.push(b);
+        }
+    }
+    console.log(m);
+    for(var n = 0; n< listnew.length ; n++){
+        for (var o = 0; o < m.length; m++) {
+            var z = Math.floor(Math.random() * m[o])
+            if (z === m[o]) {
+                var temp = listnew[n];
+                listnew[n] = listnew[z];
+                listnew[z] = temp;
+            }
+
+        }
+    }
+    Array.prototype.chunk = function ( n ) {
+        if ( !this.length ) {
+            return [];
+        }
+        return [ this.slice( 0, n ) ].concat( this.slice(n).chunk(n) );
+    };
+    const a = sessionStorage.getItem("rows");
+    const lit = listnew.chunk(a);
+    yield put(reLoadListSuccess(lit))
+
+}
 
 function* rootSaga() {
+    yield takeEvery(types.showList, showListSaga);
     yield takeLatest(leverType.LEVER, updateLeverSaga);
     yield takeLatest(types.changStatusTrue, setPointSaga);
+    yield takeLatest(types.reLoadList,reLoadListSaga);
     yield all([
         watcherClick(),
     ])

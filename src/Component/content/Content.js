@@ -1,43 +1,108 @@
-import React, {Component, useState} from 'react';
-import { connect } from 'react-redux';
+import React, {useEffect, useState, useCallback} from 'react';
+import {connect} from 'react-redux';
 import * as action from '../../Redux/Actions/index';
 import Clock from "../clock/index";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import nhac from "../../image/nhac.mp3";
+import nhac2 from "../../image/nhac2.mp3"
+import ReactAudioPlayer from 'react-audio-player';
+import "./content.css";
 function Content(props){
-    const { list, point} = props;
+    const [nhacphat, setNhacPhat] = useState(nhac);
+    setTimeout(()=>{
+        setNhacPhat(nhac2)
+    },180000);
+    setTimeout(()=>{
+        setNhacPhat(nhac)
+    },180000)
+
+    var { list, point} = props;
     const [checkHandle, setCheckHandle] = useState(10);
     const [checkReset, setCheckReset] = useState(false);
+    const [play, setPlay] = useState(true);
 
-    // const [lever, setLever] = useState(lever);
+    useEffect(()=>{
+        const {newshowList} = props;
+        newshowList();
+    },[])
+
+
+
     const resetGame = (checkReset) => {
         const {newState} = props;
-        setCheckReset(true);
+        setTimeout(()=>{
+            setCheckReset(true);
+            setCheckHandle(10);
+
+        },100);
+        setTimeout(()=>{
+            setCheckReset(false);
+        },1000);
     }
 
-    const onExchange = (list) => {
-        const { checkSwapArr } = props;
+    const onExchange = () => {
+        const { reloadListCreate } = props;
         let handleLimit = checkHandle - 1;
         if (handleLimit < 0) {
             alert("HẾT LƯỢT ĐẢO");
             setCheckHandle(0);
         } else {
             setCheckHandle(handleLimit);
-            checkSwapArr(list);
+            reloadListCreate(list);
         }
     }
 
-    const handleTime = () => {
-        setInterval(() => {
-            this.setState((prevState) => ({
-                time: prevState.time - 1,
-            }))
-        }, 1000);
+    const onPlayMusic = () => {
+        setPlay(!play);
     }
+    sessionStorage.setItem("play",play);
 
     const changeStatusItem = (arr, list, item, index, indexitem) => {
-        const { checkButtonClick ,point, setPoint} = props;
+        const { checkButtonClick} = props;
         checkButtonClick(arr, list, item, index, indexitem);
     }
+    const showMusic = () => {
+        let html = null;
+        if(play === true){
+            html =  (
+                <div>
+                    <div className="d-flex align-items-center" onClick={onPlayMusic}>
+                        <i style={{
+                            color: "yellow"
+                        }} className="fas fa-volume-up">
+                        </i>
+                        <h5 style={{
+                            color: "rgb(253, 125, 74)"
+                        }} className="m-0 mx-2">Tắt âm thanh</h5>
+
+                    </div>
+                    <ReactAudioPlayer
+                        style={{
+                            display: "none"
+                        }}
+                        src={nhacphat}
+                        autoPlay={play}
+                        controls
+                    ></ReactAudioPlayer>
+                </div>
+        )
+        }else{
+            html =  (<div className="d-flex align-items-center" onClick={onPlayMusic}>
+                        <i style={{
+                            color: "yellow"
+                        }} className="fas fa-volume-mute">
+                        </i>
+                        <h5 style={{
+                            color: "rgb(253, 125, 74)"
+                        }} className="m-0 mx-2">Bật âm thanh</h5>
+
+                    </div>
+
+            )
+        }
+        return html;
+    }
+
 
 
         var lever = sessionStorage.getItem("lever");
@@ -57,7 +122,7 @@ function Content(props){
             return (
                 <div key={index}>
                     {arr.map((item, indexitem) => {
-                        if (checkReset === 'on') {
+                        if (checkReset === true) {
                             item.status = false;
                         }
                         return (
@@ -74,6 +139,7 @@ function Content(props){
         })
         return (
             <div className="mt-5">
+
                 <div className="d-flex justify-content-around"
                     style={{ width: "1000px", margin: "0px auto", marginBottom: 0 }}>
                     <div className="text-center">
@@ -95,6 +161,7 @@ function Content(props){
                         <h1 style={{
                             color: "rgb(253, 125, 74)"
                         }}>Điểm</h1>
+
                         <h1 style={{
                             color: "yellow",
                             fontWeight: "bold"
@@ -115,16 +182,9 @@ function Content(props){
                     alignItems: "center",
                     margin: "10px auto",
                 }}>
-                    <div className="d-flex align-items-center">
-                        <i style={{
-                            color: "yellow"
-                        }} className="fas fa-volume-up">
-                        </i>
-                        <h5 style={{
-                            color: "rgb(253, 125, 74)"
-                        }} className="m-0 mx-2">Tắt âm thanh</h5>
-                    </div>
-                    <div className="d-flex align-items-center" onClick={onExchange}>
+                    {showMusic()}
+
+                    <div className="d-flex align-items-center" onClick={()=>onExchange(list)}>
                         <i style={{
                             color: "yellow"
                         }} className="fas fa-sync-alt">
@@ -167,7 +227,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         newState: (index, indexitem) => dispatch(action.changeStatusIcon(index, indexitem)),
         checkButtonClick: (arr, list, item, index, indexitem, point) => dispatch(action.checkButton(arr, list, item, index, indexitem, point)),
-        checkSwapArr: (list) => dispatch(action.swapArr(list)),
+        reloadListCreate: (list) => dispatch(action.reLoadList(list)),
+        newshowList: () =>dispatch(action.showList()),
     };
 }
 

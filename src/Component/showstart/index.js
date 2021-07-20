@@ -22,7 +22,7 @@ function StartView(props) {
                             <Link to="/startlevel" className="btn btn-info">Chọn level</Link>
                         </div>
                         <div className="m-3">
-                            <Link className="btn btn-danger">Hướng dẫn</Link>
+                            <Link to="/startlevel" className="btn btn-danger">Hướng dẫn</Link>
                         </div>
                     </div>
                 </div>

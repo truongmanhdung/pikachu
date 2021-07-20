@@ -6,10 +6,12 @@ export const showList = () =>{
     }
 }
 
-export const showListSuccess = (list) =>{
+export const showListSuccess = (data) =>{
     return{
         type: types.showListSuccess,
-        list
+        payload: {
+            data
+        }
     }
 }
 
@@ -36,5 +38,22 @@ export const swapArr = (list) => {
     return{
         type: types.handleArr,
         list,
+    }
+}
+
+export const reLoadList = (list) => {
+    return{
+        type: types.reLoadList,
+        payload: {
+            list,
+        }
+    }
+}
+export const reLoadListSuccess = (list) => {
+    return{
+        type: types.reLoadListSucces,
+        payload: {
+            list,
+        }
     }
 }

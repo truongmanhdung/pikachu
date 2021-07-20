@@ -16,3 +16,7 @@ export const point = "POINT";
 
 export const pointSuccess = "POINTSUCCESS";
 
+export const reLoadList = "RELOADLIST";
+
+export const reLoadListSucces = "RELOADLISTSUCCESS";
+
