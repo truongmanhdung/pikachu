@@ -1,10 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
 import './style.css';
-Clock.propTypes = {
-
-};
-
 function count (num){
     return num - 1;
 }
@@ -23,9 +18,10 @@ function Clock(props) {
             setTimeout(()=>{
                 const timenew = count(timeup);
                 setTimeUp(timenew);
+                sessionStorage.setItem("timenew",timenew);
             },1000);
         }
-    })
+    },)
     function showClock(){
         if(timeup>0){
             return (<div className="mx-2">

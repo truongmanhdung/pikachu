@@ -2,8 +2,6 @@ import * as types from "../Constant/types";
 
 const rows = sessionStorage.getItem("rows");
 const cols = sessionStorage.getItem("cols");
-const limit = 4;
-let mount = 0;
 const myReduces = (state = [] , action) => {
     switch (action.type){
         case types.showList:

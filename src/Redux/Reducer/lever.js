@@ -24,7 +24,6 @@ const myReduces = (state = initialState, action)=>{
     switch(action.type){
         case leverTypes.LEVER_SUCCESS: {
             const {lever,cols,rows} = action.payload;
-            console.log(lever)
             return {
                 ...state,
                 lever: lever,

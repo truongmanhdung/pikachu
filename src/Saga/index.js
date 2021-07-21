@@ -1,31 +1,17 @@
-import {all, call, fork, put, select, take, takeEvery, takeLatest} from 'redux-saga/effects'
+import {all, call, put, select, takeEvery, takeLatest} from 'redux-saga/effects'
 import * as types from './../Redux/Constant/types'
 import * as leverType from '../Redux/Constant/lever'
 import {updatePointSuccess} from "../Redux/Actions/point";
 import {updateLeverSuccess} from "../Redux/Actions/lever";
 import {reLoadListSuccess, showListSuccess} from "../Redux/Actions";
 
-import {checkLineX, checkLineY, checkMoreX, checkTwoPoint, checkRectX, checkMoreY,checkTwoPoint2,checkRectY,checkEndRoad,addSameId} from "../Selector/index"
-import {handleArr} from "./../Redux/Constant/types";
+import {addSameId, checkTwoPoint} from "../Selector/index"
+
 let checkRequest = 0;
 let checkObj = [];
-let checkHandle = [];
-var init = JSON.parse(sessionStorage.getItem("api"));
-var init = JSON.parse(sessionStorage.getItem("api"));
-const rows = sessionStorage.getItem("rows");
-const cols = sessionStorage.getItem("cols");
-
-
-
-
 function* watcherClick() {
-    while(true) {
-        const action = yield take(types.checkTwoButton);
-        yield fork(getTwoClick, action);
-    }
+    yield takeEvery(types.checkTwoButton,getTwoClick);
 }
-
-
 function* handleItem(list) {
     if(checkObj[0].id === checkObj[1].id &&
          list[checkObj[0].index][checkObj[0].indexItem]
@@ -138,17 +124,16 @@ function* reLoadListSaga({payload}){
             listnew[n] = listnew[item];
             listnew[item] = temp;
         }
-        
     }
-    Array.prototype.chunk = function ( n ) {
-        if ( !this.length ) {
-            return [];
-        }
-        return [ this.slice( 0, n ) ].concat( this.slice(n).chunk(n) );
-    };
+
+    var chunk;
+    var listnew1 = [];
     const a = sessionStorage.getItem("rows");
-    const lit = listnew.chunk(a);
-    yield put(reLoadListSuccess(lit))
+    while (listnew.length > 0) {
+        chunk = listnew.splice(0,a);
+        listnew1.push(chunk)
+    }
+    yield put(reLoadListSuccess(listnew1))
 
 }
 

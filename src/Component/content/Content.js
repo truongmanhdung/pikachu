@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useCallback} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import * as action from '../../Redux/Actions/index';
 import Clock from "../clock/index";
@@ -9,15 +9,14 @@ import ReactAudioPlayer from 'react-audio-player';
 import "./content.css";
 function Content(props){
     const [nhacphat, setNhacPhat] = useState(nhac13);
-    const nhac2 = setInterval(()=>{
+    const nhac2 = setTimeout(()=>{
         setNhacPhat(nhac23);
         clearInterval(nhac1);
-    },120000);
+    },1000);
     const nhac1 = setInterval(()=>{
         setNhacPhat(nhac13);
         clearInterval(nhac2)
-    },120000)
-
+    },1000)
     var { list, point} = props;
     const [checkHandle, setCheckHandle] = useState(10);
     const [checkReset, setCheckReset] = useState(false);
@@ -26,12 +25,8 @@ function Content(props){
     useEffect(()=>{
         const {newshowList} = props;
         newshowList();
-    },[])
-
-
-
+    },[]);
     const resetGame = (checkReset) => {
-        const {newState} = props;
         setTimeout(()=>{
             setCheckReset(true);
             setCheckHandle(10);
@@ -58,7 +53,6 @@ function Content(props){
         setPlay(!play);
     }
     sessionStorage.setItem("play",play);
-
     const changeStatusItem = (arr, list, item, index, indexitem) => {
         const { checkButtonClick} = props;
         checkButtonClick(arr, list, item, index, indexitem);
@@ -97,9 +91,7 @@ function Content(props){
                         <h5 style={{
                             color: "rgb(253, 125, 74)"
                         }} className="m-0 mx-2">Bật âm thanh</h5>
-
                     </div>
-
             )
         }
         return html;
@@ -119,7 +111,7 @@ function Content(props){
         }else{
             a = 84;
         }
-
+        var timeend = sessionStorage.getItem("timenew");
         const showIcon = list.map((arr, index) => {
             return (
                 <div key={index}>
@@ -128,17 +120,22 @@ function Content(props){
                             item.status = false;
                         }
                         return (
-                            <div key={indexitem} style={item.status === false ? {} : { opacity: 0, visibility: "hidden" }}>
-                                <div className="focusIcon p-2 bg-light"
-                                    style={{ width: a, height: a, boxSizing: "border-box", border: '1px solid', cursor: "pointer" }}
-                                    onClick={() => changeStatusItem(arr, list, item, index, indexitem)} disabled={item.status}>
-                                    <img style={{ width: "100%" }} src={item.img} alt='error' />
-                                </div>
-                            </div>
+                           <div key={indexitem} style={timeend === "0" ? {userSelect: "none",pointerEvents: "none", cursor: "default"}: {}}>
+                               <div  style={item.status === false ? {} : { opacity: 0, visibility: "hidden" }}>
+                                   <div className="focusIcon p-2 bg-light"
+                                        style={{ width: a, height: a, boxSizing: "border-box", border: '1px solid', cursor: "pointer" }}
+                                        onClick={() => changeStatusItem(arr, list, item, index, indexitem)} disabled={item.status}>
+                                       <img style={{ width: "100%" }} src={item.img} alt='error' />
+                                   </div>
+                               </div>
+                           </div>
                         )
                     })}
                 </div>)
         })
+
+
+
         return (
             <div className="mt-5">
 

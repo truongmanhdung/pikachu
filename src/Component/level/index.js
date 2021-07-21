@@ -1,15 +1,10 @@
-import React, {useState} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import logo from "../../image/logo.png";
 import "./style.css";
 import {bindActionCreators} from "redux";
 import * as leverAction from "../../Redux/Actions/lever";
 import {connect} from "react-redux";
 import { Link } from 'react-router-dom';
-Level.propTypes = {
-
-};
-
 function Level(props) {
     // const {levers} = props
     // const [lever, setLever] = useState(levers);

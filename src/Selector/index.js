@@ -1,7 +1,5 @@
 
 let checkHandle = [];
-var init = JSON.parse(sessionStorage.getItem("api"));
-var init = JSON.parse(sessionStorage.getItem("api"));
 const rows = sessionStorage.getItem("rows");
 const cols = sessionStorage.getItem("cols");
 

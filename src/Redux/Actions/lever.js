@@ -2,7 +2,6 @@ import * as actions from  "../Constant/lever";
 import {api1, api2, api3} from "../../apis/pikachu";
 
 export const updateLever = (lever,rows,cols) => {
-    console.log(lever)
     if(lever==1){
          sessionStorage.setItem("api",JSON.stringify(api1));
     }else if(lever==2){
