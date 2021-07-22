@@ -2,25 +2,26 @@ import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import * as action from '../../Redux/Actions/index';
 import Clock from "../clock/index";
-import {Link} from "react-router-dom";
 import nhac13 from "../../image/nhac.mp3";
 import nhac23 from "../../image/nhac2.mp3"
-import ReactAudioPlayer from 'react-audio-player';
 import "./content.css";
+import Music from "../music/music";
+import Action from "../actiongame";
+import Specification from "../Specifications";
 function Content(props){
-    const [nhacphat, setNhacPhat] = useState(nhac13);
+    const [nhacphat, setNhacPhat] = useState(nhac23);
     const nhac2 = setTimeout(()=>{
         setNhacPhat(nhac23);
         clearInterval(nhac1);
-    },1000);
+    },120000);
     const nhac1 = setInterval(()=>{
         setNhacPhat(nhac13);
         clearInterval(nhac2)
-    },1000)
+    },120000)
     var { list, point} = props;
     const [checkHandle, setCheckHandle] = useState(10);
     const [checkReset, setCheckReset] = useState(false);
-    const [play, setPlay] = useState(true);
+    const [play, setPlay] = useState(false);
 
     useEffect(()=>{
         const {newshowList} = props;
@@ -30,14 +31,14 @@ function Content(props){
         setTimeout(()=>{
             setCheckReset(true);
             setCheckHandle(10);
-
+            setClick('');
         },100);
         setTimeout(()=>{
             setCheckReset(false);
         },1000);
     }
 
-    const onExchange = () => {
+    const onExchange = (list) => {
         const { reloadListCreate } = props;
         let handleLimit = checkHandle - 1;
         if (handleLimit < 0) {
@@ -62,7 +63,9 @@ function Content(props){
         if(play === true){
             html =  (
                 <div>
-                    <div className="d-flex align-items-center" onClick={onPlayMusic}>
+                    <div className="d-flex align-items-center" onClick={onPlayMusic} style={{
+                        cursor: "pointer"
+                    }}>
                         <i style={{
                             color: "yellow"
                         }} className="fas fa-volume-up">
@@ -72,18 +75,13 @@ function Content(props){
                         }} className="m-0 mx-2">Tắt âm thanh</h5>
 
                     </div>
-                    <ReactAudioPlayer
-                        style={{
-                            display: "none"
-                        }}
-                        src={nhacphat}
-                        autoPlay={play}
-                        controls
-                    ></ReactAudioPlayer>
+                    <Music nhac={nhacphat} play={play}/>
                 </div>
         )
         }else{
-            html =  (<div className="d-flex align-items-center" onClick={onPlayMusic}>
+            html =  (<div className="d-flex align-items-center" onClick={onPlayMusic} style={{
+                    cursor: "pointer"
+                }}>
                         <i style={{
                             color: "yellow"
                         }} className="fas fa-volume-mute">
@@ -96,9 +94,6 @@ function Content(props){
         }
         return html;
     }
-
-
-
         var lever = sessionStorage.getItem("lever");
         var a = 84;
         var b = "Dễ"
@@ -111,6 +106,29 @@ function Content(props){
         }else{
             a = 84;
         }
+        var time = 120;
+        if(lever === "2"){
+            time = 360;
+        }else if(lever === "3"){
+            time = 720;
+        }
+        const [timeup, setTimeUp] = useState(time);
+        function count (num){
+            return num - 1;
+        }
+        useEffect(()=>{
+            if(timeup>0){
+                setTimeout(()=>{
+                    const timenew = count(timeup);
+                    setTimeUp(timenew);
+                    sessionStorage.setItem("timenew",timenew);
+                },1000);
+            }
+        },)
+        const [click, setClick] = useState();
+        const hoveClick = (index, indexitem) =>{
+            setClick(`oke${index}/${indexitem}`);
+        }
         var timeend = sessionStorage.getItem("timenew");
         const showIcon = list.map((arr, index) => {
             return (
@@ -120,12 +138,14 @@ function Content(props){
                             item.status = false;
                         }
                         return (
-                           <div key={indexitem} style={timeend === "0" ? {userSelect: "none",pointerEvents: "none", cursor: "default"}: {}}>
-                               <div  style={item.status === false ? {} : { opacity: 0, visibility: "hidden" }}>
-                                   <div className="focusIcon p-2 bg-light"
-                                        style={{ width: a, height: a, boxSizing: "border-box", border: '1px solid', cursor: "pointer" }}
-                                        onClick={() => changeStatusItem(arr, list, item, index, indexitem)} disabled={item.status}>
-                                       <img style={{ width: "100%" }} src={item.img} alt='error' />
+                           <div  key={indexitem} style={timeend === "0" ? {userSelect: "none",pointerEvents: "none", cursor: "default"}: {}}>
+                               <div onClick={()=>hoveClick(index, indexitem)} style={click===`oke${index}/${indexitem}`? {opacity: 0.4}: {}} itemID={`oke${index}/${indexitem}`}>
+                                   <div  style={item.status === false ? {} : { opacity: 0, visibility: "hidden" }}>
+                                       <div className="focusIcon p-2 bg-light"
+                                            style={{ width: a, height: a, boxSizing: "border-box", border: '1px solid', cursor: "pointer" }}
+                                            onClick={() => changeStatusItem(arr, list, item, index, indexitem)} disabled={item.status}>
+                                           <img style={{ width: "100%" }} src={item.img} alt='error' />
+                                       </div>
                                    </div>
                                </div>
                            </div>
@@ -133,39 +153,11 @@ function Content(props){
                     })}
                 </div>)
         })
-
-
-
         return (
             <div className="mt-5">
-
                 <div className="d-flex justify-content-around"
                     style={{ width: "1000px", margin: "0px auto", marginBottom: 0 }}>
-                    <div className="text-center">
-                        <h1 style={{
-                            color: "rgb(253, 125, 74)"
-                        }}>Mức độ</h1>
-                        <h1 style={{
-                            color: "yellow",
-                            fontWeight: "bold"
-                        }}>{b}</h1>
-                        <h1 style={{
-                            color: "rgb(253, 125, 74)"
-
-                        }}>Lượt đổi</h1>
-                        <h1 style={{
-                            color: "yellow",
-                            fontWeight: "bold"
-                        }}>{checkHandle}</h1>
-                        <h1 style={{
-                            color: "rgb(253, 125, 74)"
-                        }}>Điểm</h1>
-
-                        <h1 style={{
-                            color: "yellow",
-                            fontWeight: "bold"
-                        }}>{point.point? point.point: 0}</h1>
-                    </div>
+                    <Specification lever={b} checkHandle={checkHandle} point={point} />
                     <div className="body_game d-flex flex-wrap" style={{
                         width: 672,
                         height: 672,
@@ -173,44 +165,9 @@ function Content(props){
                     }}>
                         {showIcon}
                     </div>
-                    <Clock />
+                    <Clock time={time} timeup={timeup} />
                 </div>
-                <div className="d-flex ps-3" style={{
-                    justifyContent: "space-between",
-                    width: "600px",
-                    alignItems: "center",
-                    margin: "10px auto",
-                }}>
-                    {showMusic()}
-
-                    <div className="d-flex align-items-center" onClick={()=>onExchange(list)}>
-                        <i style={{
-                            color: "yellow"
-                        }} className="fas fa-sync-alt">
-                        </i>
-                        <h5 style={{
-                            color: "rgb(253, 125, 74)"
-                        }} className="m-0 mx-2">Đổi vị trí</h5>
-                    </div>
-                    <div className="d-flex align-items-center" onClick={()=>resetGame(true)}>
-                        <i style={{
-                            color: "yellow"
-                        }} className="fas fa-building">
-                        </i>
-                        <h5 style={{
-                            color: "rgb(253, 125, 74)"
-                        }} className="m-0 mx-2">Chơi lại</h5>
-                    </div>
-                    <Link to="/" style={{textDecoration: "none"}} className="d-flex align-items-center">
-                        <i style={{
-                            color: "yellow"
-                        }} className="fas fa-building">
-                        </i>
-                        <h5 style={{
-                            color: "rgb(253, 125, 74)"
-                        }} className="m-0 mx-2">Trang chủ</h5>
-                    </Link>
-                </div>
+                <Action showMusic = {showMusic} onExchange={onExchange} list={list} resetGame={resetGame}  />
             </div>
         )
 }

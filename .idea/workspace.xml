@@ -6,13 +6,7 @@
       <change beforePath="$PROJECT_DIR$/src/Component/clock/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/clock/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/content/Content.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/content/Content.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Component/help/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/help/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/level/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/level/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Actions/lever.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Actions/lever.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Reducer/lever.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Reducer/lever.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Redux/Reducer/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/Reducer/list.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Saga/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Saga/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Selector/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Selector/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +42,7 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -91,7 +85,9 @@
       <workItem from="1626743497314" duration="4327000" />
       <workItem from="1626747854787" duration="11394000" />
       <workItem from="1626761431072" duration="18806000" />
-      <workItem from="1626829761294" duration="13851000" />
+      <workItem from="1626829761294" duration="13968000" />
+      <workItem from="1626917082310" duration="8896000" />
+      <workItem from="1626926520198" duration="3361000" />
     </task>
     <servers />
   </component>

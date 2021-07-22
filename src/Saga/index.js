@@ -129,11 +129,22 @@ function* reLoadListSaga({payload}){
     var chunk;
     var listnew1 = [];
     const a = sessionStorage.getItem("rows");
-    while (listnew.length > 0) {
-        chunk = listnew.splice(0,a);
-        listnew1.push(chunk)
+    if(a){
+        while (listnew.length > 0) {
+            chunk = listnew.splice(0,a);
+            listnew1.push(chunk)
+        }
+        console.log(listnew1)
+        yield put(reLoadListSuccess(listnew1))
+    }else{
+        while (listnew.length > 0) {
+            chunk = listnew.splice(0,8);
+            listnew1.push(chunk)
+        }
+        console.log(listnew1)
+        yield put(reLoadListSuccess(listnew1))
     }
-    yield put(reLoadListSuccess(listnew1))
+
 
 }
 
