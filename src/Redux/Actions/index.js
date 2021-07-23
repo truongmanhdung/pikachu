@@ -57,3 +57,13 @@ export const reLoadListSuccess = (list) => {
         }
     }
 }
+
+export const resetList = () => {
+    return{
+        type: types.resetList,
+    }
+}
+
+
+
+

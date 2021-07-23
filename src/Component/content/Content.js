@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import * as action from '../../Redux/Actions/index';
+import {startTimeSuccess} from "../../Redux/Actions/time";
 import Clock from "../clock/index";
 import nhac13 from "../../image/nhac.mp3";
 import nhac23 from "../../image/nhac2.mp3"
@@ -18,21 +19,25 @@ function Content(props){
         setNhacPhat(nhac13);
         clearInterval(nhac2)
     },120000)
-    var { list, point} = props;
+    var { list, point, time} = props;
     const [checkHandle, setCheckHandle] = useState(10);
     const [checkReset, setCheckReset] = useState(false);
     const [play, setPlay] = useState(false);
-
+    var lever = sessionStorage.getItem("lever");
     useEffect(()=>{
-        const {newshowList} = props;
+        const time = sessionStorage.getItem("time");
+        const {newshowList,startTimeCreate} = props;
+        startTimeCreate(time);
         newshowList();
     },[]);
-    const resetGame = (checkReset) => {
+    const resetGame = (list) => {
+        const {resetListCreate} = props;
         setTimeout(()=>{
             setCheckReset(true);
             setCheckHandle(10);
             setClick('');
         },100);
+        resetListCreate(list);
         setTimeout(()=>{
             setCheckReset(false);
         },1000);
@@ -106,25 +111,8 @@ function Content(props){
         }else{
             a = 84;
         }
-        var time = 120;
-        if(lever === "2"){
-            time = 360;
-        }else if(lever === "3"){
-            time = 720;
-        }
-        const [timeup, setTimeUp] = useState(time);
-        function count (num){
-            return num - 1;
-        }
-        useEffect(()=>{
-            if(timeup>0){
-                setTimeout(()=>{
-                    const timenew = count(timeup);
-                    setTimeUp(timenew);
-                    sessionStorage.setItem("timenew",timenew);
-                },1000);
-            }
-        },)
+
+
         const [click, setClick] = useState();
         const hoveClick = (index, indexitem) =>{
             setClick(`oke${index}/${indexitem}`);
@@ -165,7 +153,7 @@ function Content(props){
                     }}>
                         {showIcon}
                     </div>
-                    <Clock time={time} timeup={timeup} />
+                    <Clock time={time}/>
                 </div>
                 <Action showMusic = {showMusic} onExchange={onExchange} list={list} resetGame={resetGame}  />
             </div>
@@ -175,7 +163,8 @@ function Content(props){
 const mapStateToProps = (state) => {
     return {
         list: state.tasks,
-        point: state.point
+        point: state.point,
+        time: state.time
     };
 }
 
@@ -185,6 +174,9 @@ const mapDispatchToProps = (dispatch) => {
         checkButtonClick: (arr, list, item, index, indexitem, point) => dispatch(action.checkButton(arr, list, item, index, indexitem, point)),
         reloadListCreate: (list) => dispatch(action.reLoadList(list)),
         newshowList: () =>dispatch(action.showList()),
+        resetListCreate: () => dispatch(action.resetList()),
+        startTimeCreate: (time) => dispatch(startTimeSuccess(time))
+
     };
 }
 

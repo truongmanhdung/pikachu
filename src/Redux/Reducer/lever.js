@@ -18,6 +18,7 @@ if(lever){
          rows: "8"
     };
      sessionStorage.setItem("api",JSON.stringify(api1));
+    sessionStorage.setItem("time",120);
 }
 
 const myReduces = (state = initialState, action)=>{

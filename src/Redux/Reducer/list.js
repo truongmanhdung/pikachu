@@ -9,6 +9,8 @@ const myReduces = (state = [] , action) => {
         case types.showListSuccess:
             const {data} = action.payload;
             return data;
+        case types.resetList:
+            return state;
         case types.reLoadList:
             return state
         case types.reLoadListSucces:

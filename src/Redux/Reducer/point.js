@@ -1,5 +1,7 @@
 import * as types from '../Constant/types';
-var initialState = 0;
+var initialState = {
+    point: 0
+};
 
 const myReduces = (state = initialState, action)=>{
 

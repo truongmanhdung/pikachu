@@ -29,7 +29,7 @@ function Action(props) {
                     color: "rgb(253, 125, 74)"
                 }} className="m-0 mx-2">Đổi vị trí</h5>
             </div>
-            <div className="d-flex align-items-center" onClick={()=>resetGame(true)} style={{
+            <div className="d-flex align-items-center" onClick={()=>resetGame()} style={{
                 cursor: "pointer"
             }}>
                 <i style={{

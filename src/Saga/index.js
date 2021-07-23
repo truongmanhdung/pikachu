@@ -6,11 +6,12 @@ import {updateLeverSuccess} from "../Redux/Actions/lever";
 import {reLoadListSuccess, showListSuccess} from "../Redux/Actions";
 
 import {addSameId, checkTwoPoint} from "../Selector/index"
+import {startTimeSuccess} from "../Redux/Actions/time";
 
 let checkRequest = 0;
 let checkObj = [];
 function* watcherClick() {
-    yield takeEvery(types.checkTwoButton,getTwoClick);
+    yield takeLatest(types.checkTwoButton,getTwoClick);
 }
 function* handleItem(list) {
     if(checkObj[0].id === checkObj[1].id &&
@@ -61,6 +62,7 @@ function* updateLeverSaga({payload}){
 function* showListSaga(){
     const cols =  yield select(state => state.lever.cols);
     const rows =  yield select(state => state.lever.rows);
+
     const init =  JSON.parse(sessionStorage.getItem("api"));
     const limit = 4;
     const setState = (initialState) => {
@@ -89,18 +91,37 @@ function* showListSaga(){
         return initialStateTwo;
     }
     const newState = setStateTwo([]);
-    yield put(showListSuccess(newState))
+
+    yield put(showListSuccess(newState));
+
+}
+
+function* startTimeSaga({payload}){
+    const {time} = payload;
+    yield put(startTimeSuccess(time));
+}
+
+function* resetGameSaga(){
+    const point = yield select(state => state.point);
+    const time = yield select(state => state.time);
+    if(point.point){
+        yield put(updatePointSuccess(point.point - point.point))
+    }else{
+        yield put(updatePointSuccess(0))
+    }
 }
 
 function* setPointSaga(){
     const point = yield select(state => state.point);
     if(point.point){
-        yield put(updatePointSuccess(point.point+10))
+        if(point.point!==0){
+            yield put(updatePointSuccess(point.point+10))
+        }else{
+            yield put(updatePointSuccess(point.point+10))
+        }
     }else{
-        yield put(updatePointSuccess(point+10))
+        yield put(updatePointSuccess(point.point+10));
     }
-
-
 }
 function* reLoadListSaga({payload}){
     var {list} = payload;
@@ -150,9 +171,11 @@ function* reLoadListSaga({payload}){
 
 function* rootSaga() {
     yield takeEvery(types.showList, showListSaga);
+    yield takeEvery(types.startTime, startTimeSaga);
     yield takeLatest(leverType.LEVER, updateLeverSaga);
     yield takeLatest(types.changStatusTrue, setPointSaga);
     yield takeLatest(types.reLoadList,reLoadListSaga);
+    yield takeLatest(types.resetList,resetGameSaga);
     yield all([
         watcherClick(),
     ])
